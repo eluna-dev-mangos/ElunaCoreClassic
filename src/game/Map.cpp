@@ -52,7 +52,9 @@ Map::~Map()
     if (m_persistentState)
         m_persistentState->SetUsedByMapState(NULL);         // field pointer can be deleted after this
 
-    sEluna->FreeInstanceId(GetInstanceId());
+    if (Instanceable())
+        sEluna->FreeInstanceId(GetInstanceId());
+
     delete i_data;
     i_data = NULL;
 
